@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="[&quot;zh-tw&quot;,&quot;en&quot;,&quot;default&quot;]"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="java基础进阶---MySQL单表"><meta name="keywords" content="JAVA--MySQL单表"><meta name="author" content="shijiaojie,undefined"><meta name="copyright" content="shijiaojie"><title>MySQL单表【shijj】</title><link rel="stylesheet" href="/css/fan.css"><link rel="stylesheet" href="/css/thirdparty/jquery.mCustomScrollbar.min.css"><link rel="icon" href="/favicon.ico"><!-- script(src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML")--><script src="/js/mathjax/mathjax.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+});
+</script><script>var isPassword = '' || false;
+if (isPassword) {
+    if (prompt('请输入文章密码') !== '') {
+        alert('密码错误！');
+        history.back();
+    }
+}</script><script>window.GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+}</script></head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">shijiaojie</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color8"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color0"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color9"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">11</span></a><a class="author-info-articles-tags article-meta" href="/tags"><span class="pull-top">标签</span><span class="pull-bottom">9</span></a><a class="author-info-articles-categories article-meta" href="/categories"><span class="pull-top">分类</span><span class="pull-bottom">7</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">shijj</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">MySQL单表</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2019-05-22 | 更新于 2019-05-22</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"><i class="fa fa-inbox article-icon" aria-hidden="true"></i><a class="link-a" href="/categories/MySQL单表/">MySQL单表</a></div><div class="button-hover tags"><i class="fa fa-tag article-icon" aria-hidden="true"></i><a class="link-a" href="/tags/JAVA-MySQL单表/">JAVA--MySQL单表</a></div></div></div><div class="main-content"><p>MySQL_day01<br>1.1MySQL的概述<br>1.1.1数据库的概述<br>1.1.1.1什么是数据库<br>数据库就是一个文件系统，通过标准的SQL语句获取数据<br>1.1.2MySQL的概述<br>1.1.2.1什么是MySQL数据库</p>
+<p>1.1.3关系型数据库概述<br>1.1.3.1什么是关系型数据库<br>关系型数据库存放的是实体之间的关系</p>
+<p>1.1.3.2常见的关系型数据库<br>MySQL<br>Oracle<br>SQLServer<br>DB2<br>SyBase<br>1.2MySQL的安装<br>1.2.1MySQL安装步骤<br>参见《MySQL的安装》视频<br>1.3MySQL的数据存储方式的概述<br>1.3.1服务器的概念<br>1.3.1.1什么是服务器<br>服务器要从硬件和软件两个方面来说：<br>硬件：指的就是一台计算机。<br>软件：需要在这台电脑上安装数据库服务器。<br>1.3.2MySQL数据库存储的方式<br>1.3.2.1存储方式的描述</p>
+<p>一台数据库服务器中会创建很多数据库（一个项目，会创建一个数据库）。在数据库中会创建很多张表（一个实体会创建一个表）。在表中会有很多记录（一个对象的实例会添加一条新的记录）。<br>1.4SQL的概述<br>1.4.1SQL的概念<br>1.4.1.1什么是SQL</p>
+<p>1.4.2SQL的分类<br>1.4.2.1DDL：数据定义语言<br>create，drop，alter..<br>1.4.2.2DCL：数据控制语言<br>grant，if…<br>1.4.2.3DML：数据操纵语言<br>insert，update，delete…<br>1.4.2.4DQL：数据查询语言<br>select<br>1.5使用SQL<br>1.5.1SQL对数据库进行操作<br>1.5.1.1创建数据库<br>语法：<br>create database 数据库名称 [character set 字符集 collate 字符集校对规则];</p>
+<p>1.5.1.2查看数据库<br>语法：<br>查看数据库服务器中所有的数据库：show databases;</p>
+<p>查看某个数据库的定义信息： show create database 数据库名称;</p>
+<p>1.5.1.3修改数据库<br>语法：<br>alter database 数据库名称 character set 字符集 collate 校对规则;</p>
+<p>1.5.1.4删除数据库<br>语法:<br>drop database 数据库名称;</p>
+<p>1.5.1.5其他数据库操作<br>切换数据库：use 数据库名称;</p>
+<p>查看当前正在使用的数据库：</p>
+<p>1.5.2SQL对数据库表进行操作<br>1.5.2.1SQL创建表<br>语法：<br>create table 表名称(字段名称 字段类型(长度) 约束,字段名称 字段类型(长度) 约束…);<br>字段类型<br>一个实体对应一个表，一个实体属性对应表的一个字段。<br>Java中的类型                        MySQL中的类型<br>byte/short/int/long                     tinyint/smallint/int/bigint<br>float                                    float<br>double                                double<br>boolean                                bit<br>char/String                            char和varchar类型<br>                                    char和varchar的区别：</p>
+<pre><code>* char代表是固定长度的字符或字符串。
+    * 定义类型char(8),向这个字段存入字符串hello，那么数据库使用三个空格将其补全。
+* varchar代表的是可变长度的字符串。
+    * 定义类型varchar(8), 向这个字段存入字符串hello,那么存入到数据库的就是hello。
+</code></pre><p>Date                                date/time/datetime/timestamp<br>                                    datetime和timestamp区别</p>
+<pre><code>* datetime就是既有日期又有时间的日期类型，如果没有向这个字段中存值，数据库使用null存入到数据库中
+* timestamp也是既有日期又有时间的日期类型，如果没有向这个字段中存值，数据库使用当前的系统时间存入到数据库中。
+</code></pre><p>File                                    BLOB/TEXT<br>约束<br>约束作用：保证数据的完整性<br>单表约束分类：<br>主键约束：primary key 主键约束默认就是唯一 非空的<br>唯一约束：unique<br>非空约束：not null<br>建表语句：<br>create database web_test1;<br>use web_test1;<br>create table user(<br>    id int primary key auto_increment,<br>    username varchar(20) unique,<br>    password varchar(20) not null,<br>    age int,<br>    birthday date<br>);</p>
+<p>1.5.2.2SQL查看表<br>查看某个数据库下的所有的表<br>语法：show tables;</p>
+<p>查看某个表的结构信息<br>语法：desc 表名;</p>
+<p>1.5.2.3SQL删除表<br>删除表<br>语法：drop table 表名;</p>
+<p>1.5.2.4SQL修改表<br>修改表：添加列<br>alter table 表名 add 列名 类型(长度) 约束;</p>
+<p>修改表：修改列类型，长度和约束<br>alter table 表名 modify 列名 类型(长度) 约束;</p>
+<p>修改表：删除列<br>alter table 表名 drop 列名;</p>
+<p>修改表：修改列名称<br>alter table 表名 change 旧列名 新列名 类型(长度) 约束;</p>
+<p>修改表：修改表名<br>rename table 表名 to 新的表名;</p>
+<p>修改表：修改表的字符集<br>alter table 表名 character set 字符集;</p>
+<p>1.5.3SQL对数据库表的记录进行操作（重点）<br>1.5.3.1SQL添加表的记录<br>语法：<br>向表中插入某些列：insert into 表名 (列名1,列名2,列名3…) values (值1,值2,值3…)<br>向表中插入所有列：insert into 表名 values (值1,值2,值3…);<br>注意事项<br>1.值的类型与数据库中表列的类型一致。<br>2.值的顺序与数据库中表列的顺序一致。<br>3.值的最大长度不能超过列设置最大长度。<br>4.值的类型是字符串或者是日期类型，使用单引号引起来。<br>添加记录<br>添加某几列<br>insert into user (id,username,password) values (null,’aaa’,’123’);</p>
+<p>添加所有列<br>insert into user values (null,’bbb’,’123’,23,’1993-09-01’);</p>
+<p>添加中文记录<br>insert into user values (null,’张三’,’123’,23,’1993-09-01’);</p>
+<p>直接向数据库中插入中文记录会出现错误！！！<br>解决方法：<br>    show variables like ‘%character%’;  –查看数据库中与字符集相关参数：<br>    需要将MySQL数据库服务器中的客户端部分的字符集改为gbk。<br>    找到MySQL的安装路径：my.ini文件，修改文件中[client]下的字符集</p>
+<pre><code>* 重新启动MySQL的服务器
+services.msc
+</code></pre><p>1.5.3.2SQL修改表的记录<br>语法:<br>update 表名 set 列名=值,列名=值 [where 条件];<br>注意事项<br>1.值的类型与列的类型一致。<br>2.值的最大长度不能超过列设置的最大长度。<br>3.字符串类型和日期类型添加单引号。<br>修改某一列的所有值<br>update user set password = ‘abc’;</p>
+<p>按条件修改数据<br>update user set password = ‘xyz’ where username = ‘bbb’;</p>
+<p>按条件修改多个列<br>update user set password=’123’,age=34 where username=’aaa’;</p>
+<p>1.5.3.3SQL删除表的记录<br>语法：<br>delete from 表名 [where 条件];<br>注意事项<br>1.删除表的记录，指的是删除表中的一行记录。<br>2.删除如果没有条件，默认是删除表中的所有记录。<br>删除某一条记录<br>delete from user where id = 2;</p>
+<p>删除表中的所有记录<br>delete from user;</p>
+<p>删除表中的记录有两种做法:<br>delete from user;<br>删除所有记录，属于DML语句，一条记录一条记录删除。事务可以作用在DML语句上的<br>truncate table user;<br>删除所有记录，属于DDL语句，将表删除，然后重新创建一个结构一样的表。事务不能控制DDL的<br>1.5.3.4SQL查看表的记录（重点）<br>基本查询<br>语法:select [distinct] *|列名 from 表 [条件];<br>环境的准备：<br>create table exam(<br>    id int primary key auto_increment,<br>    name varchar(20),<br>    english int,<br>    chinese int,<br>    math    int<br>);</p>
+<p>insert into exam values (null,’张三’,85,74,91);<br>insert into exam values (null,’李四’,95,90,83);<br>insert into exam values (null,’王五’,85,84,59);<br>insert into exam values (null,’赵六’,75,79,76);<br>insert into exam values (null,’田七’,69,63,98);<br>insert into exam values (null,’李老八’,89,90,83);<br>查询所有学生考试成绩信息<br>select * from exam;</p>
+<p>查询所有学生的姓名和英语成绩<br>select name,english from exam;</p>
+<p>查询英语成绩信息（不显示重复的值）<br>select distinct english from exam;</p>
+<p>查看学生姓名和学生的总成绩<br>select name,english+chinese+math from exam;</p>
+<p>别名查询<br>select name,english+chinese+math as sum from exam;</p>
+<p>条件查询<br>使用where子句<br>&gt; , &lt; , &gt;= , &lt;= , &lt;&gt; ,=<br>like:模糊查询<br>in:范围查询<br>条件关联:and , or ,not<br>查询李四学生的成绩：<br>select * from exam where name = ‘李四’;</p>
+<p>查询名称叫李四学生并且英文大于90分<br>select * from exam where name = ‘李四’ and english &gt; 90;</p>
+<p>查询姓李的学生的信息<br>like可以进行模糊查询,在like子句中可以使用<em>或者%作为占位符。</em>只能代表一个字符，而%可以代表任意个字符。</p>
+<pre><code>* like ‘李_’        ：名字中必须是两个字，而且是姓李的。
+* like ‘李%’        ：名字中姓李的学生，李子后可以是1个或任意个字符。
+* like ‘%四’        ：名字中以四结尾的。
+* like ‘%王%’    ：只要名称中包含这个字就可以。
+</code></pre><p>select * from exam where name like ‘李%’;</p>
+<p>查询英语成绩是69,75,89学生的信息<br>select * from exam where english in (69,75,89);</p>
+<p>排序查询<br>使用order by 字段名称 asc/desc;<br>查询学生信息，并且按照语文成绩进行排序：<br>select * from exam order by chinese;</p>
+<p>查询学生信息，并且按照语文成绩倒序排序：<br>select * from exam order by chinese desc;</p>
+<p>查询学生信息，先按照语文成绩进行倒序排序，如果成绩相同再按照英语成绩升序排序<br>select * from exam order by chinese desc,english asc;</p>
+<p>查询姓李的学生的信息，按照英语成绩降序排序<br>select * from exam where name like ‘李%’ order by english desc;</p>
+<p>分组统计查询<br>聚合函数使用<br>sum();<br>获取所有学生的英语成绩的总和:<br>select sum(english) from exam;</p>
+<p>获取所有学生的英语成绩和数学成绩总和：<br>select sum(english),sum(math) from exam;</p>
+<p>查询姓李的学生的英语成绩的总和<br>select sum(english) from exam where name like ‘李%’;</p>
+<p>查询所有学生各科的总成绩：<br>select sum(english)+sum(chinese)+sum(math) from exam;</p>
+<p>select sum(english+chinese+math) from exam;<br>与上面的语句有什么不同？</p>
+<ul>
+<li>上面的语句是按照列的方式统计，英语成绩总和+语文成绩总和+数学成绩总和。</li>
+<li>下面的语句先计算英语+数学+语文然后再求和。<ul>
+<li>使用ifnull的函数</li>
+</ul>
+</li>
+</ul>
+<p>count();<br>获得学生的总数<br>select count(*) from exam;</p>
+<p>获得姓李的学生的个数<br>select count(*) from exam where name like ‘李%’;</p>
+<p>max();<br>获得数学成绩的最高分：<br>select max(math) from exam;</p>
+<p>min();<br>获得语文成绩的最小值<br>select min(chinese) from exam;</p>
+<p>avg();<br>获取语文成绩的平均值<br>select avg(chinese) from exam;</p>
+<p>分组查询<br>语法：使用group by 字段名称;<br>环境准备<br>create table orderitem(<br>    id int primary key auto_increment,<br>    product varchar(20),<br>    price double<br>);<br>insert into orderitem values (null,’电视机’,2999);<br>insert into orderitem values (null,’电视机’,2999);<br>insert into orderitem values (null,’洗衣机’,1000);<br>insert into orderitem values (null,’洗衣机’,1000);<br>insert into orderitem values (null,’洗衣机’,1000);<br>insert into orderitem values (null,’冰箱’,3999);<br>insert into orderitem values (null,’冰箱’,3999);<br>insert into orderitem values (null,’空调’,1999);<br>按商品名称统计，每类商品所购买的个数：<br>select product,count(*) from orderitem group by product;</p>
+<p>按商品名称统计，每类商品所花费的总金额：<br>select product,sum(price) from orderitem group by product;</p>
+<p>按商品名称统计，统计每类商品花费的总金额在5000元以上的商品<br><strong>*</strong> where的子句后面不能跟着聚合函数。如果现在使用带有聚合函数的条件过滤（分组后条件过滤）需要使用一个关键字having<br>select product,sum(price) from orderitem  group by product having sum(price) &gt; 5000;</p>
+<p>按商品名称统计，统计每类商品花费的总金额在5000元以上的商品，并且按照总金额升序排序<br>select product,sum(price) from orderitem  group by product having sum(price) &gt; 5000 order by sum(price) asc;</p>
+<p>总结<br>S(select)… F(from)…W(where)…G(group by)…H(having)…O(order by);</p>
+</div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">shijiaojie</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2019/05/22/MySQL单表/">http://yoursite.com/2019/05/22/MySQL单表/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com">shijj</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2019/05/22/01-重置MySQL密码笔记/"><i class="fas fa-angle-left">&nbsp;</i><span>01-重置MySQL密码笔记</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2019/05/22/JAVA-XML/"><span>JAVA--XML</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2019 By shijiaojie</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>

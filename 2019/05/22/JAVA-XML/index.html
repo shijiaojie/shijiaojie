@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="[&quot;zh-tw&quot;,&quot;en&quot;,&quot;default&quot;]"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="java基础进阶---XML"><meta name="keywords" content="JAVA--XML"><meta name="author" content="shijiaojie,undefined"><meta name="copyright" content="shijiaojie"><title>JAVA--XML【shijj】</title><link rel="stylesheet" href="/css/fan.css"><link rel="stylesheet" href="/css/thirdparty/jquery.mCustomScrollbar.min.css"><link rel="icon" href="/favicon.ico"><!-- script(src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML")--><script src="/js/mathjax/mathjax.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+});
+</script><script>var isPassword = '' || false;
+if (isPassword) {
+    if (prompt('请输入文章密码') !== '') {
+        alert('密码错误！');
+        history.back();
+    }
+}</script><script>window.GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+}</script></head><body><canvas id="universe"></canvas><!--#body--><div id="sidebar"><div class="toggle-sidebar-info button-hover"><span data-toggle="文章目录">站点概览</span></div><div class="sidebar-toc"><div class="sidebar-toc-title">目录</div><div class="sidebar-toc-progress"><span class="progress-notice">您已阅读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc-progress-bar"></div></div><div class="sidebar-toc-content" id="sidebar-toc-content"></div></div><div class="author-info hide"><div class="author-info-avatar"><img class="author-info-avatar-img" src="/avatar.png"></div><div class="author-info-name">shijiaojie</div><div class="author-info-description"></div><div class="links-buttons"><a class="links-button button-hover" href="https://github.com/fan-lv" target="_blank">GitHub<i class="icon-dot bg-color3"></i></a><a class="links-button button-hover" href="mailto:15757856604@163.com" target="_blank">E-Mail<i class="icon-dot bg-color2"></i></a><a class="links-button button-hover" href="tencent://message/?uin=1019593584&amp;Site=&amp;Menu=yes" target="_blank">QQ<i class="icon-dot bg-color6"></i></a></div><div class="author-info-articles"><a class="author-info-articles-archives article-meta" href="/archives"><span class="pull-top">日志</span><span class="pull-bottom">11</span></a><a class="author-info-articles-tags article-meta" href="/tags"><span class="pull-top">标签</span><span class="pull-bottom">9</span></a><a class="author-info-articles-categories article-meta" href="/categories"><span class="pull-top">分类</span><span class="pull-bottom">7</span></a></div></div></div><div id="main-container"><header><div id="menu-outer"><i class="menu-list-icon fas fa-bars"></i><nav id="menu-inner"><a class="menu-item" href="/">首页</a><a class="menu-item" href="/tags">标签</a><a class="menu-item" href="/categories">分类</a><a class="menu-item" href="/archives">归档</a><a class="menu-item" href="/about">关于</a></nav><div class="right-info"><a class="title-name" href="/">shijj</a><span id="now-time"></span></div></div></header><div id="content-outer"><div id="content-inner"><article id="post"><div class="post-header"><div class="title">JAVA--XML</div><div class="container"><time class="button-hover post-date"><i class="fas fa-calendar-alt article-icon" aria-hidden="true"></i> 发表于 2019-05-22 | 更新于 2019-05-22</time><!--time.button-hover.post-date #[i.fas.fa-calendar-alt.article-icon(aria-hidden="true")] #[=__('post.modified')] #[=date(page['updated'], config.date_format)]--><div class="button-hover categories"><i class="fa fa-inbox article-icon" aria-hidden="true"></i><a class="link-a" href="/categories/XML/">XML</a></div><div class="button-hover tags"><i class="fa fa-tag article-icon" aria-hidden="true"></i><a class="link-a" href="/tags/JAVA-XML/">JAVA--XML</a></div></div></div><div class="main-content"><p> java基础进阶xml<br>xml文件的概述与应用场景<br>xml文件的组成部分&amp;如何编写xml<br>xml的两种解析方式的原理<br><strong>**</strong> Dom4J开源工具的使用<br>第1章xml的概述与如何编写xml文件<br>1.1xml语言的概述<br>1.1.1xml介绍<br>xml语言是具有结构性的标记语言,  可以灵活的存储一对多的数据关系.</p>
+<pre><code>举例:
+
+
+以上这种数据, 如果通过我们学习的集合来存储的话, 需要通过多个集合的嵌套使用. 
+那么很显然, 数据存储的过程就非常麻烦, 但是我们今天所学习的xml文件就可以很简单的存储这种一对多的数据
+至于怎样存储, 我们稍后会详细讲解, 目前需要掌握的是关于xml的使用场景
+    用来存储一对多的数据 
+
+另外, xml还有一些其他的应用方面:
+
+    之前学习过properties配置文件, 通过这种配置文件, 可以使代码的编写更加灵活.
+    但是这种配置文件也只能存储一个键值对的映射关系, 如果需要存储多个呢?
+    没错, 可以使用xml , 所以xml的另一方面应用就展示出来了
+
+    用来当做配置文件存储数据
+</code></pre><p>1.1.2问题: xml文件是用来做什么的?<br>核心思想：<br>        答：存储数据<br>            延伸问题： xml是怎样存储数据的？<br>                答：以标签的形式存储<br>                例:  <name>Jack</name><br>1.2xml的文档声明<br>1.2.1Xml文件的组成部分<br>文档声明<br>元素<br>元素的属性<br>注释<br>CDATA区<br>特殊字符<br>处理指令(PI:Processing Instruction)：了解</p>
+<pre><code>绿色标注的内容：不作为掌握，了解即可
+</code></pre><p>1.2.2文档声明<br>什么是文档声明?<br>    在编写XML文档时，需要先使用文档声明来声明XML文档。且必须出现在文档的第一行<br>    这就好比我们在写java文件的时候需要声明class一样, 就是个硬性的规定.</p>
+<p>如何编写文档声明?<br>    &lt;?xml version=’1.0’ encoding=’UTF-8’?&gt;</p>
+<pre><code>xml表示标签的名字
+version表示当前文件的版本号
+encoding表示当前编码, 需要跟文件的编码产生对应关系
+
+ps: standalone表示标记此文档是否独立
+    了解即可
+</code></pre><p>1.3xml的元素<br>1.3.1什么是元素? 元素该如何编写?<br>1:     xml中的元素其实就是一个个的标签<br>    2:     标签分为两种</p>
+<pre><code>a: 包含标签体
+    理解: 尖括号全部成对儿出现, 所有的数据都用一对儿尖括号存储
+    例:
+        &lt;student&gt;
+            &lt;name&gt;zhangsan&lt;/name&gt;
+            &lt;age&gt;18&lt;/age&gt;
+        &lt;/student&gt;
+
+b: 不包含标签体
+    理解: 只有最外层的一个尖括号,括号用/标识结束, 内部的数据都用属性来编写
+
+        &lt;student 
+            name=&quot;zhangsan&quot;
+            age=&quot;18&quot;
+        /&gt;
+
+     两种方式都需要掌握, 但是第二种编写起来会更加方便
+</code></pre><p>1.3.2标签(元素的书写规范)<br>严格区分大小写；</p><p></p><p><br>只能以字母或下划线开头；abc _abc<br>不能以xml(或XML、Xml等)开头—-W3C保留日后使用；<br>名称字符之间不能有空格或制表符；<br>名称字符之间不能使用冒号 : (有特殊用途)<br>1.3.3元素中属性的注意事项<br>           一个元素可以有多个属性，每个属性都有它自己的名称和取值。<br>            属性值一定要用引号(单引号或双引号)引起来。<br>            属性名称的命名规范与元素的命名规范相同<br>            元素中的属性是不允许重复的<br>            在XML技术中，标签属性所代表的信息也可以被改成用子元素的形式来描述<br>                例如：<br>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<p><students><br>    <student name="zhangsan" age="18"></student></students></p>
+<pre><code>&lt;student&gt;
+    &lt;name&gt;zhangsan&lt;/name&gt;
+    &lt;age&gt;18&lt;/age&gt;
+&lt;/student&gt;
+</code></pre><p><br>1.4xml的注释<br>1.4.1格式编写<br>格式:<br>    &lt;!—被注释的内容 – &gt;<br>1.4.2注意事项<br>注意: 注释不能嵌套定义<br>1.5xml的其他组成部分<br>1.5.1引入CDATA区<br>为什么要使用CDATA区域?</p>
+<pre><code>如果我们在标签中写入的内容, 想要带有标签的标记符号的话, 就需要对这段内容进行转义
+就好比java中的打印语句, 想要打印出”这个字符就必须用/进行转义.
+
+标签也是一样, 想要将&lt;itheima&gt;当做内容存储的话, 就需要对他进行转义.
+</code></pre><p>如何转义?</p>
+<p>空格:&nbsp;<br>注意:<br>    这种转移可以达到效果, 但是如果操作的数据过多, 编写起来会非常痛苦, 所以, 可以使用CDATA区来解决此问题</p>
+<p>1.5.2实例代码<br>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br><!-- 
+    如果有一个包含标签体的标签，
+    他的标签体是一个普通文本，不是子标签，
+    而普通文本中包含了一个标签，那这样可以吗？
+--></p>
+<p><students><br>    <student><br>        <name>zhangsan</name><br>        <url><br>            &lt;![CDATA[<br>                <itheima><a href="http://www.itheima.com" target="_blank" rel="noopener">www.itheima.com</a></itheima><br>                <itcast><a href="http://www.itcast.cn" target="_blank" rel="noopener">www.itcast.cn</a></itcast><br>            ]]&gt;<br>        </url><br>    </student></students></p>
+<pre><code>&lt;student&gt;
+    &lt;name&gt;zhangsan&lt;/name&gt;
+    &lt;url&gt;
+        &amp;lt;itheima&amp;gt;www.itheima.com&amp;lt;/itheima&amp;gt;
+    &lt;/url&gt;
+&lt;/student&gt;
+</code></pre><p><br>1.6DTD的入门案例<br>1.6.1为什么要有约束 (DTD)?<br>XML都是用户自定义的标签，若出现小小的错误，软件程序将不能正确地获取文件中的内容而报错。(如：Tomcat)<br>XML技术中，可以编写一个文档来约束一个XML的书写规范，这个文档称之为约束<br>1.6.2如何使用DTD约束文件?<br>1.编写DTD文件<br>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!ELEMENT 书架(书+)&gt;<br>    &lt;!ELEMENT 书 (书名,作者,售价)&gt;<br>    &lt;!ELEMENT 书名 (#PCDATA)&gt;<br>    &lt;!ELEMENT 作者 (#PCDATA)&gt;<br>    &lt;!ELEMENT 售价 (#PCDATA)&gt;<br>2.在xml文件中引入DTD文件<br>&lt;!DOCTYPE 书架 SYSTEM “book.dtd”&gt;<br>    引入了写好的DTD文件后, 格式就必须跟DTD文件保持一致<br>1.7DTD的细节<br>1.7.1语法细节<br>在DTD文档中使用ELEMENT关键字来声明一个XML元素。<br>•语法：&lt;!ELEMENT 元素名称 使用规则&gt;<br>使用规则：<br>•(#PCDATA):指示元素的主体内容只能是普通的文本.(Parsed Character Data)<br>•EMPTY：用于指示元素的主体为空。比如<br><br>•ANY:用于指示元素的主体内容为任意类型。<br>•(子元素)：指示元素中包含的子元素<br>•定义子元素及描述它们的关系:<br>–如果子元素用逗号分开，说明必须按照声明顺序去编写XML文档。<br>•如: &lt;!ELEMENT FILE (TITLE,AUTHOR,EMAIL)<br>–如果子元素用”|”分开，说明任选其一。<br>•如:&lt;!ELEMENT FILE (TITLE|AUTHOR|EMAIL)<br>–用+、<em>、？来表示元素出现的次数<br>•如果元素后面没有+</em>?:表示必须且只能出现一次<br>•+:表示至少出现一次，一次或多次<br>•*：表示可有可无，零次、一次或多次<br>•?:表示可以有也可以无，有的话只能有一次。零次或一次</p>
+<p>1.7.2定义属性<br>•在DTD文档中使用ATTLIST关键字来为一个元素声明属性。<br>•语法：<br>        &lt;!ATTLIST 元素名<br>            属性名1 属性值类型 设置说明<br>            属性名2 属性值类型 设置说明<br>            …<br>        &gt;<br>•属性值类型：<br>–CDATA：表示属性的取值为普通的文本字符串<br>–ENUMERATED (DTD没有此关键字)：表示枚举，只能从枚举列表中任选其一，如(鸡肉|牛肉|猪肉|鱼肉)<br>–ID:表示属性的取值不能重复<br>•设置说明<br>–#REQUIRED：表示该属性必须出现<br>–#IMPLIED：表示该属性可有可无<br>–#FIXED:表示属性的取值为一个固定值。语法：#FIXED “固定值”<br>直接值：表示属性的取值为该默认值<br>1.7.3实例代码1<br>&lt;!ATTLIST 商品<br>        类别 CDATA #REQUIRED<br>        颜色 CDATA #IMPLIED</p>
+<blockquote>
+</blockquote>
+<p>&lt;?xml version = “1.0” encoding=”GB2312” standalone=”yes”?&gt;<br>    &lt;商品 类别=”服装”颜色=”黄色” /&gt;<br>1.7.4实例代码2<br>&lt;?xml version = “1.0” encoding=”GB2312” standalone=”yes”?&gt;<br>&lt;!DOCTYPE 购物篮 [<br>   &lt;!ELEMENT 购物篮 (肉+)&gt;<br>    &lt;!ELEMENT 肉 EMPTY&gt;<br>    &lt;!ATTLIST 肉 品种 ( 鸡肉 | 牛肉 | 猪肉 | 鱼肉 ) “鸡肉”&gt;<br>]&gt;<br>&lt;购物篮&gt;<br>    &lt;肉 品种=”鱼肉”/&gt;<br>    &lt;肉 品种=”牛肉”/&gt;<br>    &lt;肉/&gt;<br>&lt;/购物篮&gt;</p>
+<p>1.8Schema的概述<br>1.8.1概述<br>Schema约束自身就是一个XML文件，但它的扩展名通常为.xsd<br>一个XML Schema文档通常称之为模式文档(约束文档)，遵循这个文档书写的xml文件称之为实例文档。\<br>XML Schema对名称空间支持得非常好</p>
+<p>理解:<br>    名称空间: 相当于package<br>约束文档: 编写好的Person类<br>    实例文档: 通过Person类创建对象<br>1.9Schema入门案例<br>1.9.1实例代码<br>约束文档:</p>
+<p>&lt;?xml version=’1.0’ encoding=’UTF-8’ ?&gt;<br>&lt;xs:schema xmlns:xs=’<a href="http://www.w3.org/2001/XMLSchema&#39;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema&#39;</a><br>                     //标准的名称空间<br>                      targetNamespace=’<a href="http://www.itheima.com&#39;" target="_blank" rel="noopener">http://www.itheima.com&#39;</a><br>                        //将该schema文档绑定到<a href="http://www.itheima.com名称空间" target="_blank" rel="noopener">http://www.itheima.com名称空间</a><br>                &gt;<br>    &lt;xs:element name=’书架’ &gt;<br>        <a href="xs:complexType" target="_blank" rel="noopener">xs:complexType</a><br>            &lt;xs:sequence maxOccurs=’unbounded’ &gt;<br>                &lt;xs:element name=’书’ &gt;<br>                    <a href="xs:complexType" target="_blank" rel="noopener">xs:complexType</a><br>                        <a href="xs:sequence" target="_blank" rel="noopener">xs:sequence</a><br>                            &lt;xs:element name=’书名’ type=’xs:string’ /&gt;<br>                            &lt;xs:element name=’作者’ type=’xs:string’ /&gt;<br>                            &lt;xs:element name=’售价’ type=’xs:string’ /&gt;<br>                        &lt;/xs:sequence&gt;<br>                    &lt;/xs:complexType&gt;<br>                &lt;/xs:element&gt;<br>            &lt;/xs:sequence&gt;<br>        &lt;/xs:complexType&gt;<br>    &lt;/xs:element&gt;<br>&lt;/xs:schema&gt;</p>
+<p>实例文档:<br>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;itheima:书架 xmlns:itheima=”<a href="http://www.itheima.com&quot;" target="_blank" rel="noopener">http://www.itheima.com&quot;</a><br>                xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a><br>                xsi:schemaLocation=”<a href="http://www.itheima.com" target="_blank" rel="noopener">http://www.itheima.com</a> book.xsd”&gt;<br>    <a href="itheima:书" target="_blank" rel="noopener">itheima:书</a><br>        <a href="itheima:书名" target="_blank" rel="noopener">itheima:书名</a>JavaScript网页开发&lt;/itheima:书名&gt;<br>        <a href="itheima:作者" target="_blank" rel="noopener">itheima:作者</a>张孝祥&lt;/itheima:作者&gt;<br>        <a href="itheima:售价" target="_blank" rel="noopener">itheima:售价</a>28.00元&lt;/itheima:售价&gt;<br>    &lt;/itheima:书&gt;<br>&lt;/itheima:书架&gt;</p>
+<p>名称空间:<br>&lt;itheima:书架 xmlns:itheima=”<a href="http://www.itheima.com&quot;" target="_blank" rel="noopener">http://www.itheima.com&quot;</a><br>xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a><br>xsi:schemaLocation=”<a href="http://www.itheima.com" target="_blank" rel="noopener">http://www.itheima.com</a> book.xsd”&gt;<br>1.9.2使用默认名称空间<br>•基本格式：<br>    xmlns=”URI”<br>•举例：<br>    &lt;书架 xmlns=”<a href="http://www.it315.org/xmlbook/schema&quot;" target="_blank" rel="noopener">http://www.it315.org/xmlbook/schema&quot;</a><br>        xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a><br>        xsi:schemaLocation=”<a href="http://www.it315.org/xmlbook/schema" target="_blank" rel="noopener">http://www.it315.org/xmlbook/schema</a> book.xsd”&gt;<br>        &lt;书&gt;<br>        &lt;书名&gt;JavaScript网页开发&lt;/书名&gt;<br>        &lt;作者&gt;张孝祥&lt;/作者&gt;<br>        &lt;售价&gt;28.00元&lt;/售价&gt;<br>        &lt;/书&gt;<br>    &lt;书架&gt;</p>
+<p>第2章解析xml文件<br>2.1XML解析的两种方式<br>2.1.1DOM方式和SAX方式<br>DOM：Document Object Model，文档对象模型。这种方式是W3C推荐的处理XML的一种方式。(全部加载完后再解析)<br>SAX：Simple API for XML。这种方式不是官方标准，属于开源社区XML-DEV，几乎所有的XML解析器都支持它。(边加载边解析)<br>XML解析开发包<br>JAXP：是SUN公司推出的解析标准实现。<br>Dom4J：是开源组织推出的解析开发包。(牛，大家都在用，包括SUN公司的一些技术的实现都在用。)<br>Dom for java four<br>Log4j<br>2.1.2总结:<br>DOM: 将整棵树一口气全部加载到内存当中, 我们可以非常方便的操作任意的标签和属性.<br>但是, 如果整棵树特别大的时候, 会出现内存溢出的问题</p>
+<p>节点: 标签、属性、文本、甚至是换行都称之为节点</p>
+<p>SAX: 一个节点一个节点的进行解析(暂不掌握)</p>
+<p>2.2Dom4J的方法概述</p>
+<ul>
+<li>Dom4J的常用方法：<ul>
+<li>Document</li>
+<li>Element getRootElement() :获取根元素对象（根标签）</li>
+<li>Element</li>
+<li>List elements() ：获取所有的子元素</li>
+<li>List elements(String name)：根据指定的元素名称来获取相应的所有的子元素</li>
+<li>Element element(String name)：根据指定的元素名称来获取子元素对象,如果元素名称重复，则获取第一个元素 </li>
+<li>String    elementText(String name) ：根据指定的子元素名称，来获取子元素中的文本</li>
+<li>String    getText() ：获取当前元素对象的文本</li>
+<li>void setText(String text)：设置当前元素对象的文本</li>
+<li>String    attributeValue(String name)：根据指定的属性名称获取其对应的值</li>
+<li>public Element addAttribute(String name,String value)：根据指定的属性名称和值进行添加或者修改BeanUtils的常用方法<br>2.3Dom4J的案例 (获取).<br>2.3.1功能分析<br>//1、得到某个具体的节点内容:打印”郑州”<br>//2、遍历所有元素节点:打印他们的元素名称。<br>Ps: 因为不知道有多少个元素节点, 所以需要递归.</li>
+</ul>
+</li>
+</ul>
+<p>2.3.2案例代码<br>private static void method2() throws Exception {<br>        //2、遍历所有元素节点:打印他们的元素名称。<br>        //获取根元素<br>        Document document = Dom4JUtils.getDocument();<br>        Element rootElement = document.getRootElement();<br>        treeWalk(rootElement);<br>    }</p>
+<pre><code>public static void treeWalk(Element element) {
+    //输出元素的名称
+    System.out.println(element.getName());
+
+    //获取指定元素的所有子元素
+    List&lt;Element&gt; es = element.elements();
+    for (Element e : es) {
+        treeWalk(e);
+    }
+}
+
+private static void method() throws Exception {
+    //1、得到某个具体的节点内容:打印&quot;郑州&quot;
+    Document document = Dom4JUtils.getDocument(); 
+    //获取根元素
+    Element rootElement = document.getRootElement();
+    //获取根元素下的所有子元素
+    List&lt;Element&gt; elements = rootElement.elements();
+    //根据索引获取第一个City元素
+    Element cityElement = elements.get(0);
+    //根据子元素的名称来获取子元素的文本
+    String text = cityElement.elementText(&quot;Name&quot;);
+    System.out.println(text);
+}
+</code></pre><p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<state code="37" name="河南" description="郑州" gdp="99999亿"><br>  <city><br>    <name>郑州</name><br>    <region>高薪区</region><br>  </city><br>  <city>三门峡</city><br>  <city>洛阳</city><br>  <city>安阳</city><br>  <city>南阳</city><br></state>
+
+<p>2.4Dom4J的案例(删除和修改)<br>2.4.1功能分析<br>//3、修改某个元素节点的主体内容:信阳–&gt;安阳<br>//6、删除指定元素节点:删除元素开封</p>
+<pre><code>注意: 调用方法完毕, 仅仅是在内存中进行了修改, 需要用到OutputFormat和XMLWirter两个类配合使用
+</code></pre><p>将数据写入到文件<br>2.4.2实例代码<br>public static void write2XML(Document document) throws IOException {<br>        OutputFormat format = OutputFormat.createPrettyPrint();<br>        //format.setEncoding(“UTF-8”);//默认的编码就是UTF-8<br>        XMLWriter writer = new XMLWriter( new FileOutputStream(“src/com/itheima_04/city.xml”), format );<br>        writer.write( document );<br>    }</p>
+<p>private static void method3() throws Exception, IOException {<br>        //3、修改某个元素节点的主体内容:信阳–&gt;安阳<br>        Document document = Dom4JUtils.getDocument();<br>        //获取根元素<br>        Element rootElement = document.getRootElement();<br>        //获取根元素下的所有子元素<br>        List<element> es = rootElement.elements();<br>        //根据索引可以获取指定的元素<br>        Element cityElement = es.get(3);<br>        //修改文本<br>        cityElement.setText(“安阳”);<br>        //写回文件<br>        Dom4JUtils.write2XML(document);<br>    }</element></p>
+<p>private static void method4() throws Exception, IOException {<br>        //6、删除指定元素节点:删除元素开封<br>        Document document = Dom4JUtils.getDocument();<br>        //获取根元素<br>        Element rootElement = document.getRootElement();<br>        //获取根元素下的所有子元素<br>        List<element> es = rootElement.elements();<br>        Element cityElement = es.get(1);<br>        //无法自杀，找他爹<br>        Element parentElement = cityElement.getParent();<br>        parentElement.remove(cityElement);<br>        //写回文件<br>        Dom4JUtils.write2XML(document);<br>    }</element></p>
+<p>2.5Dom4J的案例(添加)<br>2.5.1功能分析<br>        //4、向指定元素节点中增加子元素节:添加一个新城市<city>南阳</city><br>        //5、向指定元素节点上增加同级元素节点:在洛阳前面，添加一个<city>三门峡</city><br>2.5.2案例代码<br>private static void method5() throws Exception, IOException {<br>        //4、向指定元素节点中增加子元素节:添加一个新城市<city>南阳</city><br>        Document document = Dom4JUtils.getDocument();<br>        //获取根元素<br>        Element rootElement = document.getRootElement();<br>        //添加元素<br>        Element cityElement = rootElement.addElement(“City”);<br>        //设置文本<br>        cityElement.setText(“南阳”);<br>        //写回文件<br>        Dom4JUtils.write2XML(document);<br>}</p>
+<p>private static void method6() throws Exception, IOException {<br>        //5、向指定元素节点上增加同级元素节点:在洛阳前面，添加一个<city>三门峡</city><br>        //创建一个新的元素对象<br>        Element cityElement = DocumentHelper.createElement(“City”);<br>        //设置文本<br>        cityElement.setText(“三门峡”);</p>
+<pre><code>Document document = Dom4JUtils.getDocument();
+//获取根元素
+Element rootElement = document.getRootElement();
+//获取根元素下所有的子元素
+List&lt;Element&gt; es = rootElement.elements();
+//将新的元素添加到子元素列表中
+es.add(1, cityElement);
+
+//写会文件
+Dom4JUtils.write2XML(document);
+</code></pre><p>}<br>2.6Dom4J的案例（属性获取和添加）<br>2.6.1功能分析<br>        //7、操作XML文件属性:打印State的Name<br>        //8、添加属性：State： GDP=”99999亿”<br>2.6.2案例代码<br>private static void method7() throws Exception {<br>        //7、操作XML文件属性:打印State的Name<br>        Document document = Dom4JUtils.getDocument();<br>        //获取根元素<br>        Element rootElement = document.getRootElement();<br>        //根据属性名称获取值<br>        String value = rootElement.attributeValue(“Name”);<br>        System.out.println(value);<br>}</p>
+<p>public static void main(String[] args) throws Exception  {<br>        //7、操作XML文件属性:打印State的Name<br>        //8、添加属性：State： GDP=”99999亿”<br>        Document document = Dom4JUtils.getDocument();<br>        //获取根元素<br>        Element rootElement = document.getRootElement();<br>        //添加新的属性和对应的值<br>        rootElement.addAttribute(“GDP”, “99999亿”);</p>
+<pre><code>//写回文件
+Dom4JUtils.write2XML(document);
+</code></pre><p>}</p>
+</div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">shijiaojie</a></span></div><div class="post-copyright-type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2019/05/22/JAVA-XML/">http://yoursite.com/2019/05/22/JAVA-XML/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com">shijj</a>！</span></div></div></article><div id="pagination"><div class="prev-post pull-left"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2019/05/22/MySQL单表/"><i class="fas fa-angle-left">&nbsp;</i><span>MySQL单表</span></a></div><div class="next-post pull-right"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span><a href="/2019/05/22/网络编程/"><span>网络编程</span><span>&nbsp;</span><i class="fas fa-angle-right"></i></a></div></div><!--div!= paginator()--></div></div><div class="button-hover" id="return-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></div><footer><div id="footer"><div class="button-hover" id="side-button"><i class="fas fa-arrow-right"></i></div><div class="right-content"><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fas fa-file-o"></i></span><span id="busuanzi_value_page_pv"></span><span></span></div><div class="copyright">&copy;2017 ～ 2019 By shijiaojie</div></div></div></footer></div><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery-3.3.1.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/velocity.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/thirdparty/jquery.mCustomScrollbar.concat.min.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/fan.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/canvas_bg.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/utils.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/scroll.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/sidebar.js"></script><!--script(src=url)--><!--js(src=url_for(url) + '?version=' + version())--><script src="/js/copy.js"></script><!--script(src=url)--></body></html>
