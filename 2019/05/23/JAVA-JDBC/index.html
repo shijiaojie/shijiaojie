@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans,en,default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JAVA-JDBC,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.1JDBC的概述1.1.1什么是JDBC 1.1.2什么是数据库驱动驱动：两个设备（应用）之间通信的桥梁。1.1.3为什么学习JDBC没有JDBC的时候，如果现在要开发一套系统，使用Java连接MySQL数据库，那么这时候Java程序员需要了解MySQL驱动API，如果使用Java连接Oracle数据库，那么这个时候Java程序员需要了解Oracle数据库驱动API。SUN公司提供一套统一的">
+<meta name="keywords" content="JAVA-JDBC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA-JDBC">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/JAVA-JDBC/index.html">
+<meta property="og:site_name" content="疾风劲草">
+<meta property="og:description" content="1.1JDBC的概述1.1.1什么是JDBC 1.1.2什么是数据库驱动驱动：两个设备（应用）之间通信的桥梁。1.1.3为什么学习JDBC没有JDBC的时候，如果现在要开发一套系统，使用Java连接MySQL数据库，那么这时候Java程序员需要了解MySQL驱动API，如果使用Java连接Oracle数据库，那么这个时候Java程序员需要了解Oracle数据库驱动API。SUN公司提供一套统一的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/JAVA-JDBC/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/JAVA-JDBC/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/JAVA-JDBC/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/JAVA-JDBC/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/JAVA-JDBC/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/JAVA-JDBC/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/JAVA-JDBC/9.png">
+<meta property="og:updated_time" content="2019-05-23T13:56:23.440Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA-JDBC">
+<meta name="twitter:description" content="1.1JDBC的概述1.1.1什么是JDBC 1.1.2什么是数据库驱动驱动：两个设备（应用）之间通信的桥梁。1.1.3为什么学习JDBC没有JDBC的时候，如果现在要开发一套系统，使用Java连接MySQL数据库，那么这时候Java程序员需要了解MySQL驱动API，如果使用Java连接Oracle数据库，那么这个时候Java程序员需要了解Oracle数据库驱动API。SUN公司提供一套统一的">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/23/JAVA-JDBC/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/23/JAVA-JDBC/">
+
+
+
+
+
+  <title>JAVA-JDBC | 疾风劲草</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">疾风劲草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">在分享中成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/something" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            something
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/JAVA-JDBC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shijiaojie">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="疾风劲草">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JAVA-JDBC</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T21:36:58+08:00">
+                2019-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA-JDBC/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA-JDBC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1.1JDBC的概述<br>1.1.1什么是JDBC</p>
+<p>1.1.2什么是数据库驱动<br>驱动：两个设备（应用）之间通信的桥梁。<br>1.1.3为什么学习JDBC<br>没有JDBC的时候，如果现在要开发一套系统，使用Java连接MySQL数据库，那么这时候Java程序员需要了解MySQL驱动API，如果使用Java连接Oracle数据库，那么这个时候Java程序员需要了解Oracle数据库驱动API。<br>SUN公司提供一套统一的规范（接口）。然后各个数据库生产商提供这套接口的实现。这套接口规范就是JDBC的规范。<br>1.2JDBC的入门<br>1.2.1JDBC的环境准备<br>1.2.1.1创建数据库和表<br>create database web_test3;<br>use web_test3;<br>create table user(<br>    id int primary key auto_increment,<br>    username varchar(20),<br>    password varchar(20),<br>    nickname varchar(20),<br>    age int<br>);<br>insert into user values (null,’aaa’,’123’,’小丽’,34);<br>insert into user values (null,’bbb’,’123’,’大王’,32);<br>insert into user values (null,’ccc’,’123’,’小明’,28);<br>insert into user values (null,’ddd’,’123’,’大黄’,21);<br>1.2.1.2创建项目，引入jar包<br><img src="/2019/05/23/JAVA-JDBC/1.png" alt=" "><br>1.2.2JDBC的代码实现<br>1.2.2.1JDBC的开发步骤<br>第一步：加载驱动<br>第二步：获得连接<br>第三步：基本操作<br>第四步：释放资源<br>1.2.2.2JDBC的代码实现<br>import org.junit.Test;</p>
+<p>/**</p>
+<ul>
+<li>JDBC的入门程序</li>
+<li><p>@author jt<br><em>
+</em>/<br>public class JDBCDemo1 {</p>
+<p> @Test<br> /**</p>
+<ul>
+<li>JDBC的入门<br><em>/<br>public void demo1() throws Exception{<br> // 1.加载驱动<br> Class.forName(“com.mysql.jdbc.Driver”);<br> // 2.获得连接<br> Connection conn = DriverManager.getConnection(“jdbc:mysql://localhost:3306/web_test3”, “root”, “abc”);<br> // 3.基本操作：执行SQL<br> // 3.1获得执行SQL语句的对象<br> Statement statement = conn.createStatement();<br> // 3.2编写SQL语句:<br> String sql = “select </em> from user”;<br> // 3.3执行SQL:<br> ResultSet rs = statement.executeQuery(sql);<br> // 3.4遍历结果集:<br> while(rs.next()){<pre><code>System.out.print(rs.getInt(&quot;id&quot;)+&quot; &quot;);
+System.out.print(rs.getString(&quot;username&quot;)+&quot; &quot;);
+System.out.print(rs.getString(&quot;password&quot;)+&quot; &quot;);
+System.out.print(rs.getString(&quot;nickname&quot;)+&quot; &quot;);
+System.out.print(rs.getInt(&quot;age&quot;));
+System.out.println();
+</code></pre> }<br> // 4.释放资源<br> rs.close();<br> statement.close();<br> conn.close();<br>}<br>}<br>1.3JDBC的API详解之DriverManager<br>1.3.1DriverManager：驱动管理类<br>1.3.1.1作用一：注册驱动<br><img src="/2019/05/23/JAVA-JDBC/2.png" alt=" "><br>这个方法可以完成驱动的注册，但是实际开发中一般不会使用这个方法完成驱动的注册！！！<br>原因：<br>如果需要注册驱动，就会使用DriverManager.registerDriver(new Driver());，但是查看源代码发现，在代码中有一段静态代码块，静态代码块已经调用了注册驱动的方法。<br><img src="/2019/05/23/JAVA-JDBC/3.png" alt=" "><br>如果再手动调用该方法注册驱动，就会导致驱动被注册两次。实际开发中一般会采用：</li>
+</ul>
+</li>
+</ul>
+<p>1.3.1.2作用二：获得连接</p>
+<p>这个方法就是用来获得与数据库连接的方法：这个方法中有三个参数：<br>url            ：与数据库连接的路径<br>user            ：与数据库连接的用户名<br>password        ：与数据库连接的密码<br>主要关注的是url的写法：<br>jdbc:mysql://localhost:3306/web_test3<br>jdbc            :连接数据库的协议<br>mysql        :是jdbc的子协议<br>localhost        :连接的MySQL数据库服务器的主机地址。（连接是本机就可以写成localhost），如果连接不是本机的，就需要写上连接主机的IP地址。<br>3306        :MySQL数据库服务器的端口号<br>web_test3    :数据库名称<br>url如果连接的是本机的路径，可以简化为如下格式：<br>jdbc:mysql:///web_test3<br>1.4JDBC的API详解之Connection<br>1.4.1Connection：与数据库连接对象<br>1.4.1.1作用一：创建执行SQL语句的对象</p>
+<p>执行SQL语句对象:<br>Statement            :执行SQL<br>CallableStatement        :执行数据库中存储过程<br>PreparedStatement        :执行SQL.对SQL进行预处理。解决SQL注入漏洞。<br>1.4.1.2作用二：管理事务</p>
+<p>1.5JDBC的API详解之Statement<br>1.5.1Statement：执行SQL<br>1.5.1.1作用一：执行SQL</p>
+<p>执行SQL的方法<br>boolean execute(String sql);<br>执行查询，修改，添加，删除的SQL语句。<br>ResultSet executeQuery(String sql);<br>执行查询（执行select语句）。<br>int executeUpate(String sql);<br>执行修改，添加，删除的SQL语句。<br>1.5.1.2作用二：执行批处理</p>
+<p>1.6JDBC的API详解之ResultSet<br>1.6.1ResultSet：结果集。<br>通过select语句的查询结果。<br>1.6.1.1结果集的遍历</p>
+<p>结果集遍历原理</p>
+<p>代码实现</p>
+<p>1.6.1.2结果集的获取</p>
+<p>结果集获取可以使用结果集中的:<br>getXXX();方法通常都会有一个重载的方法。<br>getXXX(int columnIndex);<br>getXXX(String columnName);<br>1.7JDBC的资源释放<br>1.7.1JDBC资源释放<br>JDBC程序执行结束后，将与数据库进行交互的对象释放掉，通常是ResultSet,Statement,Connection。<br>这几个对象中尤其是Connection对象是非常稀有的。这个对象一定要做到尽量晚创建，尽早释放掉。<br>将资源释放的代码写入到finally的代码块中。<br>资源释放的代码应该写的标准：<br>        if(rs !=null){<br>                try {<br>                    rs.close();<br>                } catch (SQLException e) {<br>                    e.printStackTrace();<br>                }</p>
+<pre><code>    rs = null;
+}
+
+if(statement !=null){
+    try {
+        statement.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    statement = null;
+}
+
+
+if(conn !=null){
+    try {
+        conn.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    conn = null;
+}
+</code></pre><p>1.1JDBC的CRUD操作之保存操作<br>1.1.1保存操作代码实现<br>    @Test<br>    /**</p>
+<pre><code> * 保存操作的代码实现
+ */
+public void demo1(){
+    Connection conn = null;
+    Statement stmt = null;
+    try{
+        // 注册驱动:
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+        // 获得连接:
+        conn = DriverManager.getConnection(&quot;jdbc:mysql:///web_test3&quot;, &quot;root&quot;, &quot;abc&quot;);
+        // 执行操作:
+        // 创建执行SQL语句对象:
+        stmt = conn.createStatement();
+        // 编写SQL语句:
+        String sql = &quot;insert into user values (null,&apos;eee&apos;,&apos;123&apos;,&apos;阿黄&apos;,21)&quot;;
+        // 执行SQL语句:
+        int num = stmt.executeUpdate(sql);
+        if(num &gt; 0){
+            System.out.println(&quot;保存用户成功!!!&quot;);
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        // 资源释放：
+        if(stmt != null){
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            stmt = null;
+        }
+        if(conn != null){
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            conn = null;
+        }
+    }
+}
+</code></pre><p>1.1JDBC的CURD操作之修改操作<br>1.1.1修改操作代码实现<br>    @Test<br>    /**</p>
+<pre><code> * 修改操作的代码实现
+ */
+public void demo2(){
+    Connection conn = null;
+    Statement stmt  = null;
+    try{
+        // 注册驱动:
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+        // 获得连接
+        conn = DriverManager.getConnection(&quot;jdbc:mysql:///web_test3&quot;, &quot;root&quot;, &quot;abc&quot;);
+        // 执行操作:
+        // 创建执行SQL语句的对象:
+        stmt = conn.createStatement();
+        // 编写SQL语句：
+        String sql = &quot;update user set password=&apos;abc&apos;,nickname=&apos;旺财&apos; where id = 5&quot;;
+        // 执行SQL语句:
+        int num = stmt.executeUpdate(sql);
+        if(num &gt; 0){
+            System.out.println(&quot;修改用户成功!!!&quot;);
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        // 资源释放：
+        if(stmt != null){
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            stmt = null;
+        }
+        if(conn != null){
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            conn = null;
+        }
+    }
+}
+</code></pre><p>1.1JDBC的CRUD操作之删除操作<br>1.1.1删除操作的代码实现<br>    @Test<br>    /**</p>
+<pre><code> * 删除操作的代码实现
+ */
+public void demo3(){
+    Connection conn = null;
+    Statement stmt = null;
+    try{
+        // 注册驱动:
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+        // 获得连接:
+        conn = DriverManager.getConnection(&quot;jdbc:mysql:///web_test3&quot;, &quot;root&quot;, &quot;abc&quot;);
+        // 创建执行SQL语句对象:
+        stmt = conn.createStatement();
+        // 编写SQL:
+        String sql = &quot;delete from user where id = 5&quot;;
+        // 执行SQL:
+        int num = stmt.executeUpdate(sql);
+        if(num &gt; 0){
+            System.out.println(&quot;删除用户成功！！！&quot;);
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        // 资源释放：
+        if(stmt != null){
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            stmt = null;
+        }
+        if(conn != null){
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            conn = null;
+        }
+    }
+}
+</code></pre><p>1.1JDBC的CRUD操作之查询操作<br>1.1.1查询多条记录<br>    @Test<br>    /**</p>
+<pre><code> * 查询多条记录
+ */
+public void demo4(){
+    Connection conn = null;
+    Statement stmt = null;
+    ResultSet rs = null;
+    try{
+        // 注册驱动
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+        // 获得连接
+        conn = DriverManager.getConnection(&quot;jdbc:mysql:///web_test3&quot;, &quot;root&quot;, &quot;abc&quot;);
+        // 执行操作
+        // 创建执行SQL语句的对象:
+        stmt = conn.createStatement();
+        // 编写SQL:
+        String sql = &quot;select * from user&quot;;
+        // 执行SQL:
+        rs = stmt.executeQuery(sql);
+        // 遍历结果集:
+        while(rs.next()){
+            System.out.println(rs.getInt(&quot;id&quot;)+&quot; &quot;+rs.getString(&quot;username&quot;)+&quot; &quot;+rs.getString(&quot;password&quot;));
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        // 资源释放：
+        if(rs != null){
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            rs = null;
+        }
+        if(stmt != null){
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            stmt = null;
+        }
+        if(conn != null){
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            conn = null;
+        }
+    }
+}
+</code></pre><p>1.1.2查询一条记录<br>    @Test<br>    /**</p>
+<pre><code> * 查询一条记录
+ */
+public void demo5(){
+    Connection conn = null;
+    Statement stmt = null;
+    ResultSet rs = null;
+    try{
+        // 注册驱动
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+        // 获得连接
+        conn = DriverManager.getConnection(&quot;jdbc:mysql:///web_test3&quot;, &quot;root&quot;, &quot;abc&quot;);
+        // 执行SQL
+        // 创建执行SQL语句对象:
+        stmt = conn.createStatement();
+        // 编写SQL:
+        String sql = &quot;select * from user where id = 4&quot;;
+        rs = stmt.executeQuery(sql);
+        // 判断就可以:
+        if(rs.next()){
+            System.out.println(rs.getInt(&quot;id&quot;)+&quot; &quot;+rs.getString(&quot;username&quot;)+&quot; &quot;+rs.getString(&quot;password&quot;));
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        // 资源释放：
+        if(rs != null){
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            rs = null;
+        }
+        if(stmt != null){
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            stmt = null;
+        }
+        if(conn != null){
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            conn = null;
+        }
+    }
+}
+</code></pre><p>1.1JDBC的工具类的抽取<br>1.1.1抽取一个JDBC的工具类<br>因为传统JDBC的开发，注册驱动，获得连接，释放资源这些代码都是重复编写的。所以可以将重复的代码提取到一个类中来完成。<br>/**</p>
+<ul>
+<li>JDBC的工具类</li>
+<li><p>@author jt<br><em>
+</em>/<br>public class JDBCUtils {<br> private static final String driverClassName;<br> private static final String url;<br> private static final String username;<br> private static final String password;</p>
+<p> static{</p>
+<pre><code>driverClassName=&quot;com.mysql.jdbc.Driver&quot;;
+url=&quot;jdbc:mysql:///web_test3&quot;;
+username=&quot;root&quot;;
+password=&quot;abc&quot;;
+</code></pre><p> }</p>
+<p> /**</p>
+<ul>
+<li><p>注册驱动的方法<br>*/<br>public static void loadDriver(){<br> try {</p>
+<pre><code>Class.forName(driverClassName);
+</code></pre><p> } catch (ClassNotFoundException e) {</p>
+<pre><code>e.printStackTrace();
+</code></pre><p> }<br>}</p>
+<p>/**</p>
+</li>
+<li><p>获得连接的方法<br>*/<br>public static Connection getConnection(){<br> Connection conn = null;<br> try{</p>
+<pre><code>// 将驱动一并注册:
+loadDriver();
+// 获得连接
+conn = DriverManager.getConnection(url,username, password);
+</code></pre><p> }catch(Exception e){</p>
+<pre><code>e.printStackTrace();
+</code></pre><p> }<br> return conn;<br>}</p>
+<p>/**</p>
+</li>
+<li><p>释放资源的方法<br>*/<br>public static void release(Statement stmt,Connection conn){<br> if(stmt != null){</p>
+<pre><code>try {
+    stmt.close();
+} catch (SQLException e) {
+    e.printStackTrace();
+}
+
+stmt = null;
+</code></pre><p> }<br> if(conn != null){</p>
+<pre><code>try {
+    conn.close();
+} catch (SQLException e) {
+    e.printStackTrace();
+}
+conn = null;
+</code></pre><p> }<br>}</p>
+<p>public static void release(ResultSet rs,Statement stmt,Connection conn){<br> // 资源释放：<br> if(rs != null){</p>
+<pre><code>try {
+    rs.close();
+} catch (SQLException e) {
+    e.printStackTrace();
+}
+
+rs = null;
+</code></pre><p> }<br> if(stmt != null){</p>
+<pre><code>try {
+    stmt.close();
+} catch (SQLException e) {
+    e.printStackTrace();
+}
+
+stmt = null;
+</code></pre><p> }<br> if(conn != null){</p>
+<pre><code>try {
+    conn.close();
+} catch (SQLException e) {
+    e.printStackTrace();
+}
+conn = null;
+</code></pre><p> }<br>}<br>}<br>1.1.2测试工具类<br>@Test<br>/**</p>
+</li>
+<li>查询操作：使用工具类<br>*/<br>public void demo1(){<br> Connection conn = null;<br> Statement stmt = null;<br> ResultSet rs = null;<br> try{<pre><code>// 获得连接:
+conn = JDBCUtils.getConnection();
+// 创建执行SQL语句的对象:
+stmt = conn.createStatement();
+// 编写SQL:
+String sql = &quot;select * from user&quot;;
+// 执行查询:
+rs = stmt.executeQuery(sql);
+// 遍历结果集:
+while(rs.next()){
+    System.out.println(rs.getInt(&quot;id&quot;)+&quot; &quot;+rs.getString(&quot;username&quot;)+&quot; &quot;+rs.getString(&quot;password&quot;));
+}
+</code></pre> }catch(Exception e){<pre><code>e.printStackTrace();
+</code></pre> }finally{<pre><code>// 释放资源:
+JDBCUtils.release(rs, stmt, conn);
+</code></pre> }<br>}<br>1.8JDBC的配置信息提取到配置文件<br>1.8.1配置文件<br>属性文件<br>格式：扩展名是.properties<br>内容：key=value<br>XML文件<br>1.8.2提取信息到配置文件<br>定义一个配置文件<br><img src="/2019/05/23/JAVA-JDBC/6.png" alt=" "><br>1.8.3在工具类中解析属性文件<br>获取到具体内容为常量赋值<br><img src="/2019/05/23/JAVA-JDBC/7.png" alt=" "><br>1.9JDBC的SQL注入漏洞<br>1.9.1什么是SQL注入漏洞<br>在早期互联网上SQL注入漏洞普遍存在。有一个网站，用户需要进行注册，用户注册以后根据用户名和密码完成登录。假设现在用户名已经被其他人知道了，但是其他人不知道你的密码，也可以登录到网站上进行相应的操作。<br>1.9.2演示SQL注入漏洞<br>1.9.2.1基本登录功能实现<br><img src="/2019/05/23/JAVA-JDBC/8.png" alt=" "></li>
+</ul>
+</li>
+</ul>
+<p>1.9.2.2演示SQL注入漏洞<br>输入用户名<br>aaa’ or ‘1=1 密码随意<br>aaa’ –      密码随意</p>
+<p>1.1JDBC的SQL注入漏洞分析和解决<br>1.1.1SQL注入漏洞分析<br><img src="/2019/05/23/JAVA-JDBC/9.png" alt=" "></p>
+<p>1.1.2SQL注入漏洞解决<br>需要采用PreparedStatement对象解决SQL注入漏洞。这个对象将SQL预先进行编译，使用?作为占位符。?所代表内容是SQL所固定。再次传入变量（包含SQL的关键字）。这个时候也不会识别这些关键字。<br>public class UserDao {</p>
+<pre><code>public boolean login(String username,String password){
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    // 定义一个变量:
+    boolean flag = false;
+    try{
+        // 获得连接:
+        conn = JDBCUtils.getConnection();
+        // 编写SQL语句:
+        String sql = &quot;select * from user where username = ? and password = ?&quot;;
+        // 预编译SQL
+        pstmt = conn.prepareStatement(sql);
+        // 设置参数:
+        pstmt.setString(1, username);
+        pstmt.setString(2, password);
+        // 执行SQL语句:
+        rs = pstmt.executeQuery();
+        if(rs.next()){
+            // 说明根据用户名和密码可以查询到这条记录
+            flag = true;
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        JDBCUtils.release(rs, pstmt, conn);
+    }
+    return flag;
+}
+</code></pre><p>1.1JDBC的CRUD操作之PreparedStatement的保存操作<br>1.1.1保存操作代码实现<br>    @Test<br>    /**</p>
+<pre><code> * 保存操作
+ */
+public void demo1(){
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    try{
+        // 获得连接:
+        conn = JDBCUtils.getConnection();
+        // 编写SQL语句:
+        String sql = &quot;insert into user values (null,?,?,?,?)&quot;;
+        // 预编译SQL:
+        pstmt = conn.prepareStatement(sql);
+        // 设置参数:
+        pstmt.setString(1, &quot;eee&quot;);
+        pstmt.setString(2, &quot;abc&quot;);
+        pstmt.setString(3, &quot;旺财&quot;);
+        pstmt.setInt(4, 32);
+        // 执行SQL
+        int num = pstmt.executeUpdate();
+        if(num &gt; 0){
+            System.out.println(&quot;保存成功！&quot;);
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        JDBCUtils.release(pstmt, conn);
+    }
+}
+</code></pre><p>1.1JDBC的CRUD操作之PreparedStatement的修改操作<br>1.1.1修改操作代码实现<br>    @Test<br>    /**</p>
+<pre><code> * 修改操作
+ */
+public void demo2(){
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    try{
+        // 获得连接:
+        conn = JDBCUtils.getConnection();
+        // 编写SQL语句:
+        String sql = &quot;update user set username = ?,password =?,nickname=?,age = ? where id = ?&quot;;
+        // 预编译SQL:
+        pstmt = conn.prepareStatement(sql);
+        // 设置参数:
+        pstmt.setString(1, &quot;abc&quot;);
+        pstmt.setString(2, &quot;1234&quot;);
+        pstmt.setString(3, &quot;旺旺&quot;);
+        pstmt.setInt(4, 23);
+        pstmt.setInt(5, 6);
+        // 执行SQL：
+        int num = pstmt.executeUpdate();
+        if(num &gt; 0){
+            System.out.println(&quot;修改成功！&quot;);
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        JDBCUtils.release(pstmt, conn);
+    }
+}
+</code></pre><p>1.1JDBC的CRUD操作之PreparedStatement的删除操作<br>1.1.1删除操作的代码实现<br>    @Test<br>    /**</p>
+<pre><code> * 删除操作
+ */
+public void demo3(){
+    Connection conn = null;
+    PreparedStatement pstmt  = null;
+    try{
+        // 获得连接：
+        conn = JDBCUtils.getConnection();
+        // 编写SQL语句:
+        String sql = &quot;delete from user where id = ?&quot;;
+        // 预编译SQL
+        pstmt = conn.prepareStatement(sql);
+        // 设置参数:
+        pstmt.setInt(1, 4);
+        // 执行SQL:
+        int num = pstmt.executeUpdate();
+        if(num &gt; 0){
+            System.out.println(&quot;删除成功！&quot;);
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        JDBCUtils.release(pstmt, conn);
+    }
+}
+</code></pre><p>1.1JDBC的CRUD操作之PreparedStatement的查询操作<br>1.1.1查询操作代码实现<br>    @Test<br>    /**</p>
+<pre><code> * 查询操作
+ */
+public void demo4(){
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    try{
+        // 获得连接:
+        conn = JDBCUtils.getConnection();
+        // 编写SQL:
+        String sql = &quot;select * from user&quot;;
+        // 预编译SQL:
+        pstmt = conn.prepareStatement(sql);
+        // 设置参数:
+        // 执行SQL:
+        rs = pstmt.executeQuery();
+        // 遍历结果集:
+        while(rs.next()){
+            System.out.println(rs.getInt(&quot;id&quot;)+&quot; &quot;+rs.getString(&quot;username&quot;)+&quot; &quot;+rs.getString(&quot;password&quot;)+&quot; &quot;+rs.getString(&quot;nickname&quot;));
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        JDBCUtils.release(rs, pstmt, conn);
+    }
+}
+</code></pre><p>1.1JDBC的批处理操作<br>1.1.1什么是批处理<br>之前进行JDBC的操作的时候，都是一条SQL语句执行。现在如果使用批处理，可以将一批SQL一起执行。<br>1.1.2批处理基本使用<br>    @Test<br>    /**</p>
+<pre><code> * 批处理基本操作
+ */
+public void demo1(){
+    Connection conn = null;
+    Statement stmt = null;
+    try{
+        // 获得连接:
+        conn = JDBCUtils.getConnection();
+        // 创建执行批处理对象:
+        stmt = conn.createStatement();
+        // 编写一批SQL语句：
+        String sql1 = &quot;create database test1&quot;;
+        String sql2 = &quot;use test1&quot;;
+        String sql3 = &quot;create table user(id int primary key auto_increment,name varchar(20))&quot;;
+        String sql4 = &quot;insert into user values (null,&apos;aaa&apos;)&quot;;
+        String sql5 = &quot;insert into user values (null,&apos;bbb&apos;)&quot;;
+        String sql6 = &quot;insert into user values (null,&apos;ccc&apos;)&quot;;
+        String sql7 = &quot;update user set name = &apos;mmm&apos; where id = 2&quot;;
+        String sql8 = &quot;delete from user where id = 1&quot;;
+        // 添加到批处理
+        stmt.addBatch(sql1);
+        stmt.addBatch(sql2);
+        stmt.addBatch(sql3);
+        stmt.addBatch(sql4);
+        stmt.addBatch(sql5);
+        stmt.addBatch(sql6);
+        stmt.addBatch(sql7);
+        stmt.addBatch(sql8);
+        // 执行批处理:
+        stmt.executeBatch();
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        JDBCUtils.release(stmt, conn);
+    }
+}
+</code></pre><p>1.1.3批量插入（使用PreparedStatement）<br>    @Test<br>    /**</p>
+<pre><code> * 批量插入记录:
+ * * 默认情况下MySQL批处理没有开启的，需要在url后面拼接一个参数即可。
+ */
+public void demo2(){
+    // 记录开始时间:
+    long begin = System.currentTimeMillis();
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    try{
+        // 获得连接:
+        conn = JDBCUtils.getConnection();
+        // 编写SQL语句：
+        String sql = &quot;insert into user values (null,?)&quot;;
+        // 预编译SQL:
+        pstmt = conn.prepareStatement(sql);
+        for(int i=1;i&lt;=10000;i++){
+            pstmt.setString(1, &quot;name&quot;+i);
+            // 添加到批处理
+            pstmt.addBatch();
+            // 注意问题：
+            // 执行批处理
+            if(i % 1000 == 0){
+                // 执行批处理:
+                pstmt.executeBatch();
+                // 清空批处理:
+                pstmt.clearBatch();
+            }
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        JDBCUtils.release(pstmt, conn);
+    }
+    long end = System.currentTimeMillis();
+    System.out.println((end-begin));
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA-JDBC/" rel="tag"># JAVA-JDBC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/22/02-数据库的备份和还原/" rel="next" title="02-数据库的备份和还原">
+                <i class="fa fa-chevron-left"></i> 02-数据库的备份和还原
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shijiaojie</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shijiaojie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
